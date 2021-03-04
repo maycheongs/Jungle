@@ -21,6 +21,16 @@ end
 
 # Let's do this ...
 
+## USERS
+
+puts 'Adding Users ...'
+
+User.create(
+  name:  'Abby',
+  email: 'hello@hello.com',
+  password: 'password',
+  password_confirmation: 'password',
+)
 ## CATEGORIES
 
 puts 'Finding or Creating Categories ...'
