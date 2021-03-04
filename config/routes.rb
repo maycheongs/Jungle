@@ -17,7 +17,7 @@ Rails
     namespace :admin do
       root to: 'dashboard#show'
       resources :products, except: %i[edit update show]
-      resources :categories, only: %i[create show]
+      resources :categories, except: %i[edit update show]
       resources :users, only: %i[index]
     end
 
