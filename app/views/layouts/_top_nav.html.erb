@@ -38,7 +38,7 @@
         <%= link_to 'Sign up', new_user_path %>
       </li>
       <%else%>
-      <span class="navbar-text"> Logged in as <b><%=@current_user.name%></b>
+      <span class="navbar-text"> Logged in as <b><%=@current_user.first_name%></b>
       </span>
       <li>
         <%= link_to 'Log out', logout_path, method: :delete%>
