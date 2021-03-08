@@ -2,8 +2,12 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    @user = User.find_by(email: params[:session][:email].downcase)
-    if @user && @user.authenticate(params[:session][:password])
+    @user =
+      User.authenticate_with_credentials(
+        params[:session][:email],
+        params[:session][:password],
+      )
+    if @user
       log_in @user
       redirect_to :root
     else
