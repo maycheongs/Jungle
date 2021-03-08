@@ -26,7 +26,8 @@ end
 puts 'Adding Users ...'
 
 User.create(
-  name:  'Abby',
+  first_name: 'Abby',
+  last_name: 'Lighthouse',
   email: 'hello@hello.com',
   password: 'password',
   password_confirmation: 'password',
