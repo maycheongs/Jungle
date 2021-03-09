@@ -24,8 +24,28 @@
           <dd><%= humanized_money_with_symbol @product.price %></dd>
         </dl>
       </div>
-    </div>
-
   </article>
 
+      <br>
+         <h4>Reviews</h4>
+
+        <%if @product.reviews.size == 0%>
+        <p>There are no ratings for this product yet.</p>
+        <%else%> 
+         
+        <% @product.reviews.each do |review|%>
+        <div class="panel panel-default">
+        <div class="panel-heading">
+         <%=User.find(review.user_id).first_name%> <%=User.find(review.user_id).last_name%> said (on <%=review.created_at.strftime("%B %e, %Y ")%>):
+        </div> 
+        <div class="panel-body">
+        <%=review.description%>
+        <p>Rating: <%=review.rating%>/5</p>
+        
+        </div>
+        </div>     
+        <%end%>
+        <%end%>
+      
+    
 </section>

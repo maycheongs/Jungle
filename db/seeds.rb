@@ -32,6 +32,13 @@ User.create(
   password: 'password',
   password_confirmation: 'password',
 )
+User.create(
+  first_name: 'Bob',
+  last_name: 'Builder',
+  email: 'bob@bob.com',
+  password: 'password',
+  password_confirmation: 'password',
+)
 ## CATEGORIES
 
 puts 'Finding or Creating Categories ...'
@@ -165,5 +172,22 @@ cat3.products.create!(
     price: 2_483.75,
   },
 )
+
+puts 'Adding reviews'
+
+product_ids = Product.all.size
+
+user_ids = User.all.size
+
+10.times do
+  Review.create!(
+    {
+      product_id: rand(1..product_ids),
+      user_id: rand(1..user_ids),
+      description: Faker::Hipster.paragraph(1),
+      rating: rand(1..5),
+    },
+  )
+end
 
 puts 'DONE!'
