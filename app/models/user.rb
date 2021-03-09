@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, message: 'should match confirmation'
 
   has_secure_password
+  has_many :reviews
 
   def self.authenticate_with_credentials(email, password)
     @user = User.find_by(email: email.strip.downcase)
