@@ -33,7 +33,8 @@
        </th>
      </tr>
      <p style="font-size:15px">
-     Customer: <%=@order.email%>
+     Customer: <%= current_user ? @order.email : 'Guest'%>
+     
      </p>
     </tfoot>
     </table>

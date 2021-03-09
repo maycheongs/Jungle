@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your order  <%= @user && @user.first_name %>!</h1>
+    <p>
+      Here are your order details:<br>
+    </p>
+    <p>
+    <table>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>      
+   
+      <%@order.line_items.each do |line_item| %>
+      <tr>
+      <td><%= line_item.product.name%></td>
+      <td><%= line_item.quantity.to_i%></td>
+      <td><%=humanized_money_with_symbol line_item.product.price * line_item.quantity%></td>    
+      </tr>
+      <%end%>
+      <tfoot>
+     <tr>
+       <th colspan='2'>
+       TOTAL
+       </th>
+       <th>
+       <%= humanized_money_with_symbol @order.total %>
+       </th>
+     </tr>
+     
+    </tfoot>
+    </table>
+    </p>
+    <p>Have a great day!</p>
+  </body>
+</html>
