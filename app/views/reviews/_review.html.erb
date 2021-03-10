@@ -1,13 +1,13 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <%=User.find(review.user_id).first_name%> <%=User.find(review.user_id).last_name%> said (on <%=review.created_at%>):
-  </div> 
+  </div>
   <div class="panel-body">
     <%=review.description%>
     <p>Rating: <%=review.rating%>/5</p>
     <%if review.user == current_user%>
-    <%= link_to fa_icon('trash'), product_review_path(@product,review), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to fa_icon('trash'), product_review_path(@product,review), class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
     <%end%>
-        
   </div>
-</div>   
+</div>
+   

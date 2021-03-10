@@ -20,13 +20,12 @@ Rails
     namespace :admin do
       root to: 'dashboard#show'
       resources :products, except: %i[edit update show]
-      resources :categories, except: %i[edit update show]
-      resources :users, only: %i[index]
+      resources :categories, except: %i[edit update show destroy]
     end
 
     get '/about', to: 'about#index'
 
-    resources :users, except: %i[index]
+    resources :users, only: %i[new create]
 
     get '/login', to: 'sessions#new'
     post '/login', to: 'sessions#create'

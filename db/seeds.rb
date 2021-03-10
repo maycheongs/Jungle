@@ -190,4 +190,27 @@ user_ids = User.all.size
   )
 end
 
+@product1 = Product.first
+@product2 = Product.last
+
+@order =
+  Order.new(
+    email: 'a@a.com',
+    total_cents: 100 * (@product1.price + @product2.price * 2),
+    stripe_charge_id: 1,
+  )
+@order.line_items.new(
+  product: @product1,
+  quantity: 1,
+  item_price: @product1.price,
+  total_price: @product1.price * 1,
+)
+@order.line_items.new(
+  product: @product2,
+  quantity: 2,
+  item_price: @product2.price,
+  total_price: @product2.price * 2,
+)
+@order.save!
+
 puts 'DONE!'

@@ -1,19 +1,17 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<h1>Dashboard</h1>
+<br>
 <div class="panel panel-warning">
   <div class="panel-heading">
-  <%= link_to 'Products',  [:admin, :products] %> (<%= @products.length%>)
+    <%= link_to 'Products',  [:admin, :products] %> (<%= @products.length%>)
   </div>
   <div class="panel-body">
-  More info...
+    More info...
   </div>
-</div>  
-<div class="panel panel-warning">
-<div class="panel-heading">
-Categories (<%= @categories.length%>)
 </div>
-<p>
-
-
-</p>
-
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <%= link_to 'Categories',  [:admin, :categories] %> (<%= @categories.length%>)
+  </div>
+  <div class="panel-body">
+    More info...
+  </div>

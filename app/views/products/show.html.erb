@@ -1,70 +1,71 @@
 <section class="products-show">
-
   <header class="page-header">
-    <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
+    <h1>
+      <%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %>
+    </h1>
   </header>
-
   <article class="product-detail">
-
     <div class="row">
-
       <div class="col-sm-4">
         <%= image_tag @product.image.url, class: 'main-img' %>
       </div>
-
       <div class="col-sm-8">
         <dl class="dl-horizontal">
           <dt>Name</dt>
-          <dd><%= @product.name %></dd>
+          <dd>
+            <%= @product.name %>
+          </dd>
           <dt>Description</dt>
-          <dd><%= @product.description %></dd>
+          <dd>
+            <%= @product.description %>
+          </dd>
           <dt>Quantity</dt>
-          <dd><%= @product.quantity %></dd>
+          <dd>
+            <%= @product.quantity %>
+          </dd>
           <dt>Price</dt>
-          <dd><%= humanized_money_with_symbol @product.price %></dd>
+          <dd>
+            <%= humanized_money_with_symbol @product.price %>
+          </dd>
         </dl>
       </div>
-  </article>
-
-      <br>
-         <h4>Reviews</h4>
-         <br>
-         <p id="notice"><%= notice %></p>
-         <%if logged_in?%>
-         
-         <%= form_for([@product,@review]) do |f| %>
-      
-     <% if f.object.errors.any? %>
+    </article>
+    <br>
+    <h4>Reviews</h4>
+    <br>
+    <p id="notice">
+      <%= notice %>
+    </p>
+    <%if logged_in?%>
+      <%= form_for([@product,@review]) do |f| %>
+        <% if f.object.errors.any? %>
           <div class="alert alert-danger">
             <strong>The following errors prevented saving:</strong>
             <ul>
               <% f.object.errors.full_messages.each do |error| %>
-                <li><%= error %></li>
+                <li>
+                  <%= error %>
+                </li>
               <% end %>
             </ul>
           </div>
         <% end %>
-     <div class="form-group">
-      
-      <%= f.text_area :description , class: "form-control", placeholder: 'Add a review..'%>
-      </div>
-      <div class="form-group">
-      <%= f.label :rating %>
-      <%= f.select :rating, 0..5, include_blank: true, class: "form-control"%>
-      </div>     
-
-
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+        <div class="form-group">
+          <%= f.text_area :description , class: "form-control" , placeholder: 'Add a review..' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :rating %>
+          <%= f.select :rating, 0..5, include_blank: true, class: "form-control" %>
+        </div>
+        <%= f.submit "Submit" , class: "btn btn-primary" %>
+      <% end %>
+    <%else%>
+      <p>Please log in to add a review.</p>
     <% end %>
+    <br>
+    <%if @product.reviews.size==0%>
+      <p>There are no ratings for this product yet.</p>
+    <%else%>
+      <%=render @reviews%>
     <% end %>
-    
-<br>
-        <%if @product.reviews.size == 0%>
-        <p>There are no ratings for this product yet.</p>
-        <%else%> 
-         
- <%=render @reviews%>   
-        
-        <%end%>
-          
-</section>
+  </section>

@@ -11,7 +11,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-      <li>
+        <li>
           <%= link_to 'About', about_path %>
         </li>
         <li>
@@ -30,23 +30,22 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      <li>
-      <%if !logged_in? %>
-        <%= link_to 'Log in', login_path %>
-      </li>
-       <li>
-        <%= link_to 'Sign up', new_user_path %>
-      </li>
-      <%else%>
-      <span class="navbar-text"> Logged in as <b><%=@current_user.first_name%></b>
-      </span>
-      <li>
-        <%= link_to 'Log out', logout_path, method: :delete%>
-      </li>
-      <%end%>
-       <li class="dropdown">
+        <li>
+          <%if !logged_in? %>
+            <%= link_to 'Log in', login_path %>
+          </li>
+          <li>
+            <%= link_to 'Sign up', new_user_path %>
+          </li>
+        <%else%>
+          <span class="navbar-text"> Logged in as <b><%=@current_user.first_name%></b>
+          </span>
+          <li>
+            <%= link_to 'Log out', logout_path, method: :delete%>
+          </li>
+        <%end%>
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-
             <span class="text-danger"><%= fa_icon 'lock', text: 'Admin' %></span>
             <span class="caret"></span>
           </a>

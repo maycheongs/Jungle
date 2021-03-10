@@ -1,7 +1,18 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 4.2 
 
+## Features
+* User sign up, login, logout
+* Cart check-out with Stripe API
+* Product ratings
+* Email receipts (preview only: http://localhost:3000/rails/mailers/order_mailer/order_email)
+* Admin access with basic auth to add or remove products and categories
+
+
+![home](docs/root.png)
+![reviews](docs/reviews.png)
+![cart](docs/cart.png)
 
 ## Setup
 
@@ -16,12 +27,12 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Stripe Testing
 
-Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
+Use Credit Card # 4242 4242 4242 4242 for testing success scenarios.
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
 
 ## Dependencies
 
-* Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
-* PostgreSQL 9.x
-* Stripe
+- Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
+- PostgreSQL 9.x
+- Stripe
