@@ -3,6 +3,9 @@
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
+  <p>Ave Rating: 
+  <%ave_rating = product.reviews.average(:rating)%>
+  <%=ave_rating ? "#{ave_rating.round(1)}/5"  : 'N/A'%></p>
     <% end %>
   </header>
   <p class="description">

@@ -4,7 +4,10 @@ Rails
   .draw do
     root to: 'products#index'
 
-    resources :products, only: %i[index show]
+    resources :products, only: %i[index show] do
+      resources :reviews, only: %i[create destroy]
+    end
+
     resources :categories, only: [:show]
 
     resource :cart, only: [:show] do

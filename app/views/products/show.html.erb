@@ -28,24 +28,43 @@
 
       <br>
          <h4>Reviews</h4>
+         <br>
+         <p id="notice"><%= notice %></p>
+         <%if logged_in?%>
+         
+         <%= form_for([@product,@review]) do |f| %>
+      
+     <% if f.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% f.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+     <div class="form-group">
+      
+      <%= f.text_area :description , class: "form-control", placeholder: 'Add a review..'%>
+      </div>
+      <div class="form-group">
+      <%= f.label :rating %>
+      <%= f.select :rating, 0..5, include_blank: true, class: "form-control"%>
+      </div>     
 
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+    <% end %>
+    
+<br>
         <%if @product.reviews.size == 0%>
         <p>There are no ratings for this product yet.</p>
         <%else%> 
          
-        <% @product.reviews.each do |review|%>
-        <div class="panel panel-default">
-        <div class="panel-heading">
-         <%=User.find(review.user_id).first_name%> <%=User.find(review.user_id).last_name%> said (on <%=review.created_at.strftime("%B %e, %Y ")%>):
-        </div> 
-        <div class="panel-body">
-        <%=review.description%>
-        <p>Rating: <%=review.rating%>/5</p>
+ <%=render @reviews%>   
         
-        </div>
-        </div>     
         <%end%>
-        <%end%>
-      
-    
+          
 </section>
