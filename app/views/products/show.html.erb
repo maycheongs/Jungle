@@ -24,8 +24,47 @@
           <dd><%= humanized_money_with_symbol @product.price %></dd>
         </dl>
       </div>
-    </div>
-
   </article>
 
+      <br>
+         <h4>Reviews</h4>
+         <br>
+         <p id="notice"><%= notice %></p>
+         <%if logged_in?%>
+         
+         <%= form_for([@product,@review]) do |f| %>
+      
+     <% if f.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% f.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+     <div class="form-group">
+      
+      <%= f.text_area :description , class: "form-control", placeholder: 'Add a review..'%>
+      </div>
+      <div class="form-group">
+      <%= f.label :rating %>
+      <%= f.select :rating, 0..5, include_blank: true, class: "form-control"%>
+      </div>     
+
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+    <% end %>
+    
+<br>
+        <%if @product.reviews.size == 0%>
+        <p>There are no ratings for this product yet.</p>
+        <%else%> 
+         
+ <%=render @reviews%>   
+        
+        <%end%>
+          
 </section>
