@@ -1,6 +1,6 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 
+A mini e-commerce application built with Rails 4.2. Tested with Rspec
 
 ## Features
 * User sign up, login, logout
